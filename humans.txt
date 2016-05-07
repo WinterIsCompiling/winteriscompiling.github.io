@@ -1,0 +1,11 @@
+# humanstxt.org/
+# The humans responsible & technology colophon
+
+# TEAM
+
+    Hal Jones -- AI Developer, UI Developer, Graphic Designer, Web Developer -- @IamHal
+
+# TECHNOLOGY COLOPHON
+
+    CSS3, HTML5
+    Bitbucket, Unity, Apache Server Configs, jQuery, Modernizr, Normalize.css
