@@ -166,6 +166,10 @@ nav a.current::after {
 	padding-left: 40px;
 }
 
+div.links {
+	display: inline-block;
+}
+
 a.logo {
 	float: left;
 }
@@ -280,6 +284,13 @@ h2 {
 @media (max-width: 850px) {
 	.grid .item {
 		width: 50%;
+		margin-bottom: 20px;
+	}
+}
+
+@media (max-width: 450px) {
+	.grid .item {
+		width: 100%;
 		margin-bottom: 20px;
 	}
 }
