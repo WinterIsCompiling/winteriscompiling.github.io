@@ -306,9 +306,26 @@ input[type="button"], a.button {
 	border-radius: 5px;
 }
 
+.game {
+    margin: auto;
+}
 
+.gameholder {
+    text-align: center;
+    padding: 0px;
+}
 
+div.gamepage {
+    max-width: 960px;
+    overflow: hidden;
+}
 
+p.questionaire {
+    float:left;
+    line-height: 38px;
+    margin: 0px;
+    padding-left: 15px;
+}
 
 
 /* ==========================================================================
