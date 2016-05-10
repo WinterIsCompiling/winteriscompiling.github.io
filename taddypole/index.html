@@ -14,8 +14,8 @@
 		<link rel="icon" href="/img/favicon16.png">
 
         <link rel="stylesheet" href="TemplateData/style.css">
-        <link rel="stylesheet" href="/css/normalize.css">
-        <link rel="stylesheet" href="/css/main.css">
+        <link rel="stylesheet" href="./../css/normalize.css">
+        <link rel="stylesheet" href="./../css/main.css">
         <script src="TemplateData/UnityProgress.js"></script>
 		<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
         <script src="/js/vendor/modernizr-2.8.3.min.js"></script>
@@ -35,14 +35,21 @@
 			</div>
 		</header>
 		<div class="main gamepage">
-			<content class='gameholder'>
+			<main class='gameholder'>
 				<div class="game clear">
                   <canvas class="emscripten" id="canvas" oncontextmenu="event.preventDefault()" height="600px" width="960px"></canvas>
                   <p class='questionaire'><a href='https://docs.google.com/forms/d/14Fj4oRnnYCJ3A5ND5vnsZmm1LNLBjbcRPF49MsMahTw/viewform?c=0&w=1'>Take a quick questionnaire</a></p>
                   <div class="fullscreen"><img src="TemplateData/fullscreen.png" width="38" height="38" alt="Fullscreen" title="Fullscreen" onclick="SetFullscreen(1);" /></div>
                   <div class="title">Go Fullscreen</div>
                 </div>
-			</content>
+                <div class="gamedesc">
+                    <h2>About TaddyPole</h2>
+                    <p>TaddyPole is an educational game, created to help teach children children about the lifecycle and habitats of tadpoles.</p>
+                    <p>TaddyPole was created using the Unity game engine, and is available to play in any modern web browser. TaddyPole is also available as a direct download for Android, and is coming soon for iOS.</p>
+                    <a href='TaddyPole.apk' class='button'>Get TaddyPole for Android</a>
+                </div>
+			</main>
+            
 			<footer class='clearfix'>
 				<p>Copyright &copy; Winter Is Compiling 2016. All rights reserved.</p>
 			</footer>
@@ -72,6 +79,6 @@
             memUrl: "Release/Web.mem",
           };
         </script>
-        <script src="Release/UnityLoader.js"></script>
+        <!--<script src="Release/UnityLoader.js"></script>-->
     </body>
 </html>
