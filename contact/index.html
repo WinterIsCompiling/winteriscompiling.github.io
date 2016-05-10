@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>TaddyPole - Educational Tadpole Game // Winter Is Compiling</title>
+        <title>Contact Us // Winter Is Compiling</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -11,10 +11,8 @@
         <!-- Place favicon.ico in the root directory -->
 		<link rel="icon" href="/img/favicon16.png">
 
-        <link rel="stylesheet" href="TemplateData/style.css">
         <link rel="stylesheet" href="/css/normalize.css">
         <link rel="stylesheet" href="/css/main.css">
-        <script src="TemplateData/UnityProgress.js"></script>
 		<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
         <script src="/js/vendor/modernizr-2.8.3.min.js"></script>
     </head>
@@ -25,21 +23,23 @@
 				<nav>
 					<a href='/' class='logo'><img src='/img/headerlogo.png' alt='Logo' /><span>Winter Is Compiling</span></a>
 					<div class='links'>
-						<a href='/'>Home</a><a href='/taddypole' class='current'>TaddyPole</a><a href='/about'>About Us</a><a href='/contact'>Contact</a>
+						<a href='/'>Home</a><a href='/taddypole'>TaddyPole</a><a href='/about'>About Us</a><a href='/contact' class='current'>Contact</a>
 					</div>
 				</nav>
 			</div>
 			<div class='banner'>
+				<img src='/img/logo.png' alt='Logo' />
 			</div>
 		</header>
-		<div class="main gamepage">
-			<content class='gameholder'>
-				<div class="game clear">
-                  <canvas class="emscripten" id="canvas" oncontextmenu="event.preventDefault()" height="600px" width="960px"></canvas>
-                  <p class='questionaire'><a href='https://docs.google.com/forms/d/14Fj4oRnnYCJ3A5ND5vnsZmm1LNLBjbcRPF49MsMahTw/viewform?c=0&w=1'>Take a quick questionaire</a></p>
-                  <div class="fullscreen"><img src="TemplateData/fullscreen.png" width="38" height="38" alt="Fullscreen" title="Fullscreen" onclick="SetFullscreen(1);" /></div>
-                  <div class="title">Go Fullscreen</div>
-                </div>
+		<div class="main">
+			<content>
+				<h2>Contact Us</h2>
+				<p><b>Group contact email:</b> <a href='mailto:winter.is.compiling@gmail.com' class='email'>winter.is.compiling@gmail.com</a></p>
+				<hr />
+				<p><b>Alex Dalton:</b> <a href='mailto:ad14810@bristol.ac.uk' class='email'>ad14810@bristol.ac.uk</a></p>
+				<p><b>Bhavish Jogeeah:</b> <a href='mailto:bj14780@bristol.ac.uk' class='email'>bj14780@bristol.ac.uk</a></p>
+				<p><b>Hal Jones:</b> <a href='mailto:hj12350@bristol.ac.uk' class='email'>hj12350@bristol.ac.uk</a></p>
+				<p><b>Matt Plumeridge:</b> <a href='mailto:mp14866@bristol.ac.uk' class='email'>mp14866@bristol.ac.uk</a></p>
 			</content>
 			<footer class='clearfix'>
 				<p>Copyright &copy; Winter Is Compiling 2016. All rights reserved.</p>
@@ -60,16 +60,5 @@
             r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
             ga('create','UA-XXXXX-X','auto');ga('send','pageview');
         </script>
-        <script type='text/javascript'>
-          var Module = {
-            TOTAL_MEMORY: 268435456,
-            errorhandler: null,			// arguments: err, url, line. This function must return 'true' if the error is handled, otherwise 'false'
-            compatibilitycheck: null,
-            dataUrl: "Release/Web.data",
-            codeUrl: "Release/Web.js",
-            memUrl: "Release/Web.mem",
-          };
-        </script>
-        <script src="Release/UnityLoader.js"></script>
     </body>
 </html>
