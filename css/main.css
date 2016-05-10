@@ -249,6 +249,16 @@ footer {
 	vertical-align: middle;
 }
 
+h1 {
+    display: block;
+	margin: 0px;
+	font-weight: lighter;
+	text-transform: uppercase;
+	font-size: 2.4em;
+	color: #666;
+    text-align: center;
+}
+
 h2 {
 	display: inline-block;
 	margin: 0 20px 0 0;
@@ -325,6 +335,41 @@ p.questionaire {
     line-height: 38px;
     margin: 0px;
     padding-left: 15px;
+}
+
+.about {
+	margin-bottom: 30px;
+	margin-left: -15px;
+}
+
+.about .item {
+	box-sizing: border-box;
+	width: 50%;
+	padding: 0 15px 0 30px;
+    margin-bottom: 15px;
+	display: inline-block;
+	vertical-align: top;
+	text-align: left;
+    position: relative;
+    min-height: 7em;
+}
+
+.about .item::before {
+    content: " ";
+    display: block;
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    left: 15px;
+    width: 5px;
+    background: #6079c4;
+}
+
+@media (max-width: 700px) {
+	.about .item {
+		width: 100%;
+        min-height: 0px;
+	}
 }
 
 
