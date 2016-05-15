@@ -193,6 +193,22 @@ header {
 	padding: 20px 0 80px;
 }
 
+.taddypole_background {
+    background-image: url('./../img/taddypole/background.jpg');
+    background-color: #005a7c;
+    background-position: top center;
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    min-height: 240px;
+    padding-top: 30px;
+}
+
+@media (max-width: 800px) {
+	.taddypole_background {
+		background-size: auto 100%;
+	}
+}
+
 .subtitle {
 	font-size: 1.2em;
 	text-align: center;
@@ -376,6 +392,33 @@ div.gamedesc {
     text-align: left;
     padding: 10px 20px 20px;
     border-top: 5px #6079c4 solid;
+}
+
+div.desc {
+    text-align: left;
+    padding: 10px 20px 20px;
+}
+
+div.download {
+    text-align: center;
+    margin-top: 10px;
+}
+
+p.or {
+    line-height: 0.5em;
+    font-size: 0.7em;
+    color: #FFF;
+}
+
+a.play {
+    background: #66911c;
+    font-size: 1.5em;
+    line-height: 2em;
+    box-shadow: 0 0 10px rgba(0,0,0,0.4);
+}
+
+img.taddypole_logo {
+    max-width: 100%;
 }
 
 
