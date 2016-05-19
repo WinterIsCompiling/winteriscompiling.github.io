@@ -125,10 +125,12 @@ nav a {
 	font-size: 0.8em;
 	font-weight: bold;
 	transition: background 0.3s;
+    vertical-align: top;
 }
 
-nav a * {
-	vertical-align: middle;
+nav a img {
+	position: relative;
+    top: -2px;
 }
 
 nav a:hover {
@@ -166,8 +168,13 @@ nav a.current::after {
 	padding-left: 40px;
 }
 
-div.links {
-	display: inline-block;
+nav ul {
+    display: inline-block;
+    margin: 0px;
+    padding: 0px;
+}
+nav ul li {
+    display: inline-block;
 }
 
 a.logo {
