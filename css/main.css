@@ -222,7 +222,7 @@ header {
 }
 
 div.main {
-	margin: -60px auto;
+	margin: -60px auto 25px auto;
 	max-width: 1200px;
 	background: #FFF;
 	box-shadow: 0 0 10px rgba(0,0,0,0.4);
