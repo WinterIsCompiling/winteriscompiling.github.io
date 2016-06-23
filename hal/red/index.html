@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html xmlns='http://www.w3.org/1999/xhtml' xml:lang='en' lang='en'>
+	<head>
+		<title>Website Template</title>
+		<meta http-equiv='content-type' content='text/html; charset=utf-8'/>
+		<meta name='keywords' content=''/>
+		<meta name='description' content=''/>
+		
+		<meta name="viewport" content="user-scalable=no, initial-scale=1">
+		
+		<link rel='stylesheet' type='text/css' href='main.css' />
+		<link href='font.css' rel='stylesheet' type='text/css'>
+		<link rel='shortcut icon' href='/favicon.png' />
+		<script type='text/javascript' src='jquery.min.js'></script>
+		<script>
+			(function(d, s, id) {
+				var js, fjs = d.getElementsByTagName(s)[0];
+				if (d.getElementById(id)) return;
+				js = d.createElement(s); js.id = id;
+				js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1";
+				fjs.parentNode.insertBefore(js, fjs);
+			}(document, 'script', 'facebook-jssdk'));
+		</script>
+		<script>
+			!function(d,s,id){
+				var js,fjs=d.getElementsByTagName(s)[0],
+					p=/^http:/.test(d.location)?'http':'https';
+				if(!d.getElementById(id)){
+					js=d.createElement(s);
+					js.id=id;
+					js.src=p+'://platform.twitter.com/widgets.js';
+					fjs.parentNode.insertBefore(js,fjs);
+				}
+			}(document, 'script', 'twitter-wjs');
+		</script>
+		<script type='text/javascript'>
+			Number.prototype.mod = function(n) {
+				return ((this%n)+n)%n;
+			}
+			
+			var scroller_data = [{
+				type: 'classic',
+				image: {
+					url: 'scroller1.jpg',
+					position: 'top'
+				},
+				title: 'Slider Pane',
+				description: 'This is a sample pane on the slider'
+			},{
+				type: 'classic',
+				image: {
+					url: 'scroller2.jpg',
+					position: 'top'
+				},
+				title: 'Another Slider Pane',
+				description: 'The next one is just an image banner'
+			},{
+				type: 'image',
+				image: {
+					url: 'scroller3.jpg',
+					position: 'center'
+				}
+			},{
+				type: 'image',
+				image: {
+					url: 'scroller4.jpg',
+					position: 'top'
+				}
+			}]
+			
+			var scroller = {
+				panes: [],
+				current: 0,
+				count: 5,
+				debounce: false,
+				build: function() {
+					var item=null;
+					$('div.scroller_hold').empty();
+					for (i=-2;i<(this.panes.length+2);i++) {
+						item = this.item(i.mod(this.panes.length));
+						if (i==0) {
+							item.addClass('scroller_active');
+						}
+						$('div.scroller_hold').append(item);
+					}
+					$('div.scroller_hold').css('left','-200%');
+				},
+				item: function(data) {
+					console.log(data);
+					data=this.panes[data];
+					var main = $('<article>').addClass('scroller_item');
+					main.css({
+						backgroundImage: "url('"+data.image.url+"')",
+						backgroundPosition: data.image.position + " center"
+					});
+					if (data.type=='classic') {
+						main.append($('<div>').addClass('scroller_text').append(
+							$('<h2>').text(data.title),
+							$('<p>').text(data.description)
+						));
+					}
+					return main;
+				},
+				move: function(dir) {
+					if (dir==0 && this.current==0) {
+						console.log("Switching ends");
+						if (!this.debounce) {
+							this.debounce=true;
+							this.count=5;
+							this.current=this.panes.length-1;
+							$('div.scroller_hold').addClass('scroller_hold_animates');
+							$('div.scroller_hold').css('left','-100%');
+							$('.scroller_active').removeClass('scroller_active');
+							$('.scroller_item:nth-child('+(this.panes.length+2)+')').addClass('scroller_active');
+							$('.scroller_item:nth-child(2)').addClass('scroller_active');
+							setTimeout((function(self){
+								return function(){
+									$('div.scroller_hold').removeClass('scroller_hold_animates');
+									$('div.scroller_hold').css('left','-'+((self.panes.length+1)*100)+'%');
+									$('.scroller_item:nth-child(2)').removeClass('scroller_active');
+									self.debounce=false;
+								};
+							})(this),1000);
+						}
+					}
+					else if (dir==1 && this.current==(this.panes.length-1)) {
+						if (!this.debounce) {
+							this.debounce=true;
+							this.count=5;
+							this.current=0;
+							$('div.scroller_hold').addClass('scroller_hold_animates');
+							$('div.scroller_hold').css('left','-'+((this.panes.length+2)*100)+'%');
+							$('.scroller_active').removeClass('scroller_active');
+							$('.scroller_item:nth-child(3)').addClass('scroller_active');
+							$('.scroller_item:nth-child('+(this.panes.length+3)+')').addClass('scroller_active');
+							setTimeout((function(self){
+								return function(){
+									$('div.scroller_hold').removeClass('scroller_hold_animates');
+									$('div.scroller_hold').css('left','-200%');
+									$('.scroller_item:nth-child('+(self.panes.length+3)+')').removeClass('scroller_active');
+									self.debounce=false;
+								};
+							})(this),1000);
+						}
+					}
+					else {
+						if (dir==0) {
+							this.moveTo(this.current-1);
+						}
+						else {
+							this.moveTo(this.current+1);
+						}
+					}
+				},
+				moveTo: function(val) {
+					if (val>=0 && val<this.panes.length) {
+						if (!this.debounce) {
+							this.debounce=true;
+							this.count=5;
+							this.current=val;
+							$('div.scroller_hold').addClass('scroller_hold_animates');
+							$('div.scroller_hold').css('left','-'+((2+val)*100)+'%');
+							$('.scroller_active').removeClass('scroller_active');
+							$('.scroller_item:nth-child('+(this.current+3)+')').addClass('scroller_active');
+							setTimeout((function(self){
+								return function(){
+									$('div.scroller_hold').removeClass('scroller_hold_animates');
+									self.debounce=false;
+								};
+							})(this),1000);
+						}
+					}
+				},
+				timer: function() {
+					if (this.count<=0) {
+						this.move(1);
+					}
+					else {
+						this.count--;
+					}
+					setTimeout((function(self){
+						return function(){ self.timer(); };
+					})(this),1000);
+				}
+			}
+			
+			$(document).ready(function(){
+				/*$('#header_profile a.header_button').on('click',function(){
+					dropDown(this,"#header_profile","header_selected");
+				});
+				$('#header_login a.header_button').on('click',function(){
+					dropDown(this,"#header_login","header_selected");
+				});*/
+				$('.header_dropdown_hold a.header_button').on('click',function(){
+					dropDown(this,'header_selected');
+				});
+			});
+			function dropDown(elem, className) {
+				$(elem).off('click');
+				
+				//func = function(){alert('Hi');};
+				func = (function(elem_a,className_a){
+					return function(){
+						$('html').off('click');
+						$(elem_a.parentNode).off('click').removeClass(className_a);
+						$(elem_a).off('click');
+						$(elem_a).on('click',(function(elem_b,className_b){
+							return function() {
+								dropDown(elem_b,className_b);
+							};
+						})(elem_a,className_a));
+					};
+				})(elem,className);
+				
+				$('html').on('click',func);
+				$(elem).on('click',func);
+				
+				$(elem.parentNode).on('click',function(event){
+					event.stopPropagation();
+				}).addClass(className);
+				
+			}
+            
+            $(document).ready(function(){
+				console.log((-1)%4);
+				scroller.panes=scroller_data;
+				scroller.build();
+				scroller.timer();
+			});
+		</script>
+		<!--[if lt IE 9]>  
+		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>  
+		<![endif]--> 
+	</head>
+	<body>
+		<div id="fb-root"></div>
+		<header class='topbar'>
+			<div class='header_account header_dropdown_hold' id='header_login'>
+				<a href='#' class='header_button'>Sign In</a>
+				<div class='header_login_menu'>
+					<form action='/login' method='post'>
+						<label for='user'>Email/Username</label>
+						<input type='text' name='username' />
+						<label for='pass'>Password</label>
+						<input type='password' name='pass' />
+						<button>Sign In</button>
+					</form>
+				</div>
+			</div>
+			<div class='header_account'>
+				<a href='#' class='header_button'>Register</a>
+			</div>
+		
+			<div class='header_search'>
+			</div>
+			
+			<div class='header_social'>
+			</div>
+			
+			<div class='social_controls'>
+			</div>
+			
+		</header>
+		
+		<div class='sidebar'>
+		</div>
+		
+		<div class='container'>
+		
+			<nav class='main_nav'>
+				<a href='/' class='nav_logo'>Site Logo</a>
+				<a href='#' class='nav_award'></a>
+				<ul class='navigation'>
+					<li class='active'><a href='/'>Home</a>
+						<ul>
+							<li><a href='/news'>News</a></li>
+							<li><a href='#'>Subsection</a></li>
+							<li><a href='#'>Subsection</a></li>
+							<li><a href='#'>Subsection</a></li>
+							<li><a href='#'>Subsection</a></li>
+							<li><a href='#'>Subsection</a></li>
+						</ul>
+					</li><li><a href='/forum'>Forums</a>
+						<ul>
+							<li><a href='/forum'>Forum Home</a></li>
+							<li><a href='#'>Recent Hot Topics</a></li>
+							<li><a href='#'>Recent Unread Topics</a></li>
+						</ul>
+					</li><li><a href='#'>Community</a>
+						<ul>
+							<li><a href='/forum'>Forums</a></li>
+							<li><a href='#'>Blogs</a></li>
+							<li><a href='#'>Members</a></li>
+							<li><a href='#'>Gallery</a></li>
+							<li><a href='#'>Guidelines</a></li>
+						</ul>
+					</li><li><a href='#'>Section 4</a>
+						<ul>
+							<li><a href='#'>Subsection</a></li>
+							<li><a href='#'>Subsection</a></li>
+							<li><a href='#'>Subsection</a></li>
+							<li><a href='#'>Subsection</a></li>
+							<li><a href='#'>Subsection</a></li>
+							<li><a href='#'>Subsection</a></li>
+						</ul>
+					</li><li><a href='#'>Section 5</a>
+						<ul>
+							<li><a href='#'>Subsection</a></li>
+							<li><a href='#'>Subsection</a></li>
+							<li><a href='#'>Subsection</a></li>
+							<li><a href='#'>Subsection</a></li>
+							<li><a href='#'>Subsection</a></li>
+							<li><a href='#'>Subsection</a></li>
+						</ul>
+					</li>
+				</ul>
+			</nav>
+			
+			<div class='main'>
+                <section class='scroller'>
+                    <div class='scroller_outer'>
+                        <div class='scroller_hold'>
+                        </div>
+                    </div>
+                    <a href='javascript:;' class='scroller_back' onclick='scroller.move(0)'></a>
+                    <div class='scroller_all'></div>
+                    <a href='javascript:;' class='scroller_forwards' onclick='scroller.move(1)'></a>
+                </section>
+                <section class='page_item'>
+                    <h2 class='header'>Latest News</h2>
+                    <div class='index_hold'>
+                        <div class='index_news_hold'>
+                            <article class='news_item'>
+								<header>
+									<time class='calendar'>
+										<b class='calendar_month'>May</b>
+										<b class='calendar_day'>5</b>
+										<b class='calendar_year'>2013</b>
+									</time>
+									<h2><a href='#'>Example News Article!</a></h2>
+								</header>
+								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam et tincidunt lorem. Donec egestas dolor in pharetra tempus. Nullam vehicula nulla in porttitor egestas. Nullam congue ac ipsum ultricies rutrum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Fusce nec dapibus ipsum, ut lacinia est. Mauris eget tortor volutpat, pharetra erat bibendum, euismod dolor. Donec non nulla ac sapien consectetur imperdiet. Etiam in massa ex. Aenean nec risus bibendum, malesuada elit id, ullamcorper massa. Nulla facilisi. Integer sodales massa vel imperdiet pulvinar. Aliquam sollicitudin sit amet erat eu suscipit. Pellentesque quis ante mattis, condimentum tortor id, maximus tellus. Praesent neque diam, ultrices non tempus ut, elementum ac tortor.</p>
+								<a href='#' class='faux_btn btn_continue news_rm'>Read More</a>
+							</article>
+							<article class='news_item'>
+								<header>
+									<time class='calendar'>
+										<b class='calendar_month'>May</b>
+										<b class='calendar_day'>5</b>
+										<b class='calendar_year'>2013</b>
+									</time>
+									<h2><a href='#'>Example News Article!</a></h2>
+								</header>
+								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam et tincidunt lorem. Donec egestas dolor in pharetra tempus. Nullam vehicula nulla in porttitor egestas. Nullam congue ac ipsum ultricies rutrum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Fusce nec dapibus ipsum, ut lacinia est. Mauris eget tortor volutpat, pharetra erat bibendum, euismod dolor. Donec non nulla ac sapien consectetur imperdiet. Etiam in massa ex. Aenean nec risus bibendum, malesuada elit id, ullamcorper massa. Nulla facilisi. Integer sodales massa vel imperdiet pulvinar. Aliquam sollicitudin sit amet erat eu suscipit. Pellentesque quis ante mattis, condimentum tortor id, maximus tellus. Praesent neque diam, ultrices non tempus ut, elementum ac tortor.</p>
+								<a href='#' class='faux_btn btn_continue news_rm'>Read More</a>
+							</article>
+                            <article class='news_item'>
+								<header>
+									<time class='calendar'>
+										<b class='calendar_month'>May</b>
+										<b class='calendar_day'>5</b>
+										<b class='calendar_year'>2013</b>
+									</time>
+									<h2><a href='#'>Example News Article!</a></h2>
+								</header>
+								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam et tincidunt lorem. Donec egestas dolor in pharetra tempus. Nullam vehicula nulla in porttitor egestas. Nullam congue ac ipsum ultricies rutrum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Fusce nec dapibus ipsum, ut lacinia est. Mauris eget tortor volutpat, pharetra erat bibendum, euismod dolor. Donec non nulla ac sapien consectetur imperdiet. Etiam in massa ex. Aenean nec risus bibendum, malesuada elit id, ullamcorper massa. Nulla facilisi. Integer sodales massa vel imperdiet pulvinar. Aliquam sollicitudin sit amet erat eu suscipit. Pellentesque quis ante mattis, condimentum tortor id, maximus tellus. Praesent neque diam, ultrices non tempus ut, elementum ac tortor.</p>
+								<a href='#' class='faux_btn btn_continue news_rm'>Read More</a>
+							</article>
+                            <article class='news_item'>
+								<header>
+									<time class='calendar'>
+										<b class='calendar_month'>May</b>
+										<b class='calendar_day'>5</b>
+										<b class='calendar_year'>2013</b>
+									</time>
+									<h2><a href='#'>Example News Article!</a></h2>
+								</header>
+								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam et tincidunt lorem. Donec egestas dolor in pharetra tempus. Nullam vehicula nulla in porttitor egestas. Nullam congue ac ipsum ultricies rutrum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Fusce nec dapibus ipsum, ut lacinia est. Mauris eget tortor volutpat, pharetra erat bibendum, euismod dolor. Donec non nulla ac sapien consectetur imperdiet. Etiam in massa ex. Aenean nec risus bibendum, malesuada elit id, ullamcorper massa. Nulla facilisi. Integer sodales massa vel imperdiet pulvinar. Aliquam sollicitudin sit amet erat eu suscipit. Pellentesque quis ante mattis, condimentum tortor id, maximus tellus. Praesent neque diam, ultrices non tempus ut, elementum ac tortor.</p>
+								<a href='#' class='faux_btn btn_continue news_rm'>Read More</a>
+							</article>
+                            <article class='news_item'>
+								<header>
+									<time class='calendar'>
+										<b class='calendar_month'>May</b>
+										<b class='calendar_day'>5</b>
+										<b class='calendar_year'>2013</b>
+									</time>
+									<h2><a href='#'>Example News Article!</a></h2>
+								</header>
+								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam et tincidunt lorem. Donec egestas dolor in pharetra tempus. Nullam vehicula nulla in porttitor egestas. Nullam congue ac ipsum ultricies rutrum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Fusce nec dapibus ipsum, ut lacinia est. Mauris eget tortor volutpat, pharetra erat bibendum, euismod dolor. Donec non nulla ac sapien consectetur imperdiet. Etiam in massa ex. Aenean nec risus bibendum, malesuada elit id, ullamcorper massa. Nulla facilisi. Integer sodales massa vel imperdiet pulvinar. Aliquam sollicitudin sit amet erat eu suscipit. Pellentesque quis ante mattis, condimentum tortor id, maximus tellus. Praesent neque diam, ultrices non tempus ut, elementum ac tortor.</p>
+								<a href='#' class='faux_btn btn_continue news_rm'>Read More</a>
+							</article>
+                            <article class='news_item'>
+								<header>
+									<time class='calendar'>
+										<b class='calendar_month'>May</b>
+										<b class='calendar_day'>5</b>
+										<b class='calendar_year'>2013</b>
+									</time>
+									<h2><a href='#'>Example News Article!</a></h2>
+								</header>
+								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam et tincidunt lorem. Donec egestas dolor in pharetra tempus. Nullam vehicula nulla in porttitor egestas. Nullam congue ac ipsum ultricies rutrum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Fusce nec dapibus ipsum, ut lacinia est. Mauris eget tortor volutpat, pharetra erat bibendum, euismod dolor. Donec non nulla ac sapien consectetur imperdiet. Etiam in massa ex. Aenean nec risus bibendum, malesuada elit id, ullamcorper massa. Nulla facilisi. Integer sodales massa vel imperdiet pulvinar. Aliquam sollicitudin sit amet erat eu suscipit. Pellentesque quis ante mattis, condimentum tortor id, maximus tellus. Praesent neque diam, ultrices non tempus ut, elementum ac tortor.</p>
+								<a href='#' class='faux_btn btn_continue news_rm'>Read More</a>
+							</article>
+                        </div>
+                        <div class='index_extras_hold'>
+                            <section class='index_poll'>
+                                <h2 class='subheader'>Latest Poll</h2>
+                                <div class='index_poll_text'>
+                                    <img src='poll.png' alt='Poll Icon' class='index_poll_icon' />
+                                    <p>Example poll question. Users can pick from the options below, or view the results.</p>
+                                </div>
+                                <div class='index_poll_answers'>
+                                    <a href='#'>Option #1</a>
+                                    <a href='#'>Option #2</a>
+                                    <a href='#'>Option #3</a>
+                                    <a href='#'>Option #4</a>
+                                </div>
+                                <div class='index_poll_options'>
+                                    <a href='#' class='faux_btn'>View Results</a><a href='#' class='faux_btn btn_continue'>Poll Archive</a>
+                                </div>
+                            </section>
+                            <section class='index_hot'>
+                                <h2 class='subheader'>Hot Forum Topics</h2>
+                                <div class='index_hot_topic'>
+                                    <a href='#' class='index_hot_item'>
+                                        <div class='index_hot_tname'>Trending Topic #1</div>
+                                        <div class='index_hot_author'>By <span class='fauxlink'>Username</span></div>
+                                    </a>
+                                    <a href='#' class='index_topic_icon topic_icon forum_icon_new'></a>
+                                </div>
+                                <div class='index_hot_topic'>
+                                    <a href='#' class='index_hot_item'>
+                                        <div class='index_hot_tname'>Trending Topic #2</div>
+                                        <div class='index_hot_author'>By <span class='fauxlink'>Username</span></div>
+                                    </a>
+                                    <a href='#' class='index_topic_icon topic_icon forum_icon_new'></a>
+                                </div>
+                                <div class='index_hot_topic'>
+                                    <a href='#' class='index_hot_item'>
+                                        <div class='index_hot_tname'>Trending Topic #3</div>
+                                        <div class='index_hot_author'>By <span class='fauxlink'>Username</span></div>
+                                    </a>
+                                    <a href='#' class='index_topic_icon topic_icon forum_icon_new'></a>
+                                </div>
+                                <div class='index_hot_topic'>
+                                    <a href='#' class='index_hot_item'>
+                                        <div class='index_hot_tname'>Trending Topic #4</div>
+                                        <div class='index_hot_author'>By <span class='fauxlink'>Username</span></div>
+                                    </a>
+                                    <a href='#' class='index_topic_icon topic_icon forum_icon_new'></a>
+                                </div>
+                                <div class='index_hot_topic'>
+                                    <a href='#' class='index_hot_item'>
+                                        <div class='index_hot_tname'>Trending Topic #5</div>
+                                        <div class='index_hot_author'>By <span class='fauxlink'>Username</span></div>
+                                    </a>
+                                    <a href='#' class='index_topic_icon topic_icon forum_icon_new'></a>
+                                </div>
+                            </section>
+                            <section class='index_social'>
+                                <h2 class='subheader'>Social Media</h2>
+                                <p>[Social Media Embed Here]</p>
+                            </section>
+                        </div>
+                    </div>
+                </section>
+			</div>
+			<div class='bc_ac bc_ac_base' style='display:block'>
+					<div style='display:inline-block;width:728px;height:90px;background:#AAAAAA;'></div>
+			</div>
+			<footer class='copyright'>
+				<div class='footer_links'>
+					<a href='#'>About</a> - <a href='#'>Contact</a> - <a href='#'>Sitemap</a> - <a href='#'>Privacy</a> - <a href='#'>Terms</a>
+				</div>
+				<div class='copyright_main'>
+					<p>Website Copyright &copy; 2013. All rights reserved.</p>
+				</div>
+			</footer>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,388 @@
+html {
+	font-size:			16px;
+}
+body {
+	background: 		#444444;
+	margin:				0px;
+}
+a {
+	color:				#000000;
+	text-decoration:	none;
+}
+a img {
+	border:				0px;
+}
+.banner {
+	display:			block;
+	text-align:			center;
+	background:			#FFFFFF;
+	padding-top:		24px;
+	padding-top:		1.5rem;
+}
+div.logo {
+	font-family: 		Special Elite, monospace;
+	font-size:			96px;
+	font-size:			6rem;
+	line-height:		80px;
+	line-height:		5rem;
+	margin:				0rem auto;
+	color:				#444444;
+}
+div.logo div.small {
+	font-size:			32px;
+	font-size:			2rem;
+	line-height:		0;
+}
+p.subtitle {
+	color:				#444444;
+	margin:				0 auto 0;
+	font-size:			40px;
+	font-size:			2.5rem;
+	font-family:		'Courier New',Courier,'Lucida Sans Typewriter','Lucida Typewriter','Liberation Mono',monospace;
+}
+nav.sitenav {
+	/*border-top:			1px solid #000000;*/
+	background-color:	#DDDDDD;
+}
+
+ul.navigation {
+	font-family:		Special Elite, monospace;
+	text-transform:		uppercase;
+	padding-left:		0;
+	list-style-type:	none;
+	display:			block;
+	font-size:			12.8px;
+	font-size:			0.8rem;
+	font-weight:		400;
+	margin:				0;
+}
+ul.navigation  li {
+	display:			inline-block;
+	text-align:			center;
+	zoom: 1;
+	*display: inline;
+}
+ul.navigation li a {
+	height:				22.4px;
+	height:				1.4rem;
+	width:				96px;
+	width:				6rem;
+	line-height:		22.4px;
+	line-height:		1.4rem;
+	padding-top:		3.2px;
+	padding-top:		0.2rem;
+	display:			block;
+}
+ul.navigation li a.current {
+	color:				#FFFFFF;
+	background:			#333333;
+}
+ul.navigation li a:hover {
+	color:				#FFFFFF;
+	background:			#555555;
+}
+
+article.primary {
+	text-align:			center;
+	margin:				0 auto;
+	max-width:			960px;
+	width:				100%;
+}
+article.left div.content {
+	text-align:			left;
+}
+div.main_image {
+	/*background:			#6f3527;*/
+	background-image:	url('images/background.jpg');
+	background-repeat:	no-repeat;
+	background-position:top center;
+	background-color:	#6f3527;
+	background-size:	100%;
+	height:				320px;
+	height:				20rem;
+	margin-bottom:		-256px;
+	margin-bottom:		-16rem;
+	border-bottom:		10px solid #BBBBBB;
+}
+article.primary h1 {
+	font-family:		Special Elite, monospace;
+	font-size:			48px;
+	font-size:			3rem;
+	text-shadow:		0px 0px 10px #000000;
+	margin-top:			64px;
+	margin-top:			4rem;
+	margin-left:		auto;
+	margin-right:		auto;
+	margin-bottom:		8px;
+	margin-bottom:		0.5rem;
+	color:				#FFFFFF;
+}
+ul.images {
+	padding-left:		0;
+	list-style-type:	none;
+	display:			block;
+	font-size:			12.8px;
+	font-size:			0.8rem;
+	margin:				0;
+	padding:			1%;
+	box-sizing:			border-box;
+	-moz-box-sizing:	border-box;
+}
+ul.images  li {
+	display:			inline-block;
+	text-align:			center;
+	width:				25%;
+	zoom: 1;
+	*display: inline;
+}
+ul.images li > a {
+	display:			block;
+	/*box-shadow:			0 0px 0px 9px rgba(0,0,0,0.3);*/
+	background:			rgba(0,0,0,0.3);
+	padding:			10px;
+	margin:				0px auto;
+	max-width:			200px;
+}
+ul.images li > a img {
+	max-width:			100%;
+}
+div.article_inner {
+	background:			#FFFFFF;
+	box-shadow:			0px -10px 10px rgba(0,0,0,0.4);
+}
+div.article_inner img.aside {
+	margin:				20px 30px 30px 10px;
+	float:				left;
+	box-shadow:			0 0 0 8px rgba(0,0,0,0.3);
+	max-width:			90%;
+}
+div.article_inner img.right {
+	margin:				20px 10px 30px 30px;
+	float:				right;
+}
+div.content {
+	font-family:		Loved by the King, Special Elite, monospace;
+	font-size:			24px;
+	font-size:			1.5rem;
+	padding:			10px 24px;
+	padding:			10px 1.5rem;
+}
+div.content ul {
+	text-align:			left;
+	list-style:			outside disk;
+	margin-left:		16px;
+	margin-left:		1rem;
+}
+div.content ul li {
+	position:			relative;
+	left:				16px;
+	left:				1rem;
+	padding-right:		16px;
+	padding-right:		1rem;
+}
+div.content h2 {
+	text-align:			center;
+}
+article.index div.content {
+	padding:			0 30px;
+}
+article.index div.content p {
+	margin:				0;
+}
+
+blockquote {
+	font-family:		Playball, Arial;
+	background:			#EEEEEE;
+	padding:			16px 16px;
+	padding:			1rem 1rem;
+	font-size:			40px;
+	font-size:			2.5rem;
+	margin:				16px;
+	margin:				1rem;
+	text-align:			center;
+	color:				#666666;
+}
+blockquote p.quote {
+	margin:				6.4px;
+	margin:				0.4rem;
+}
+blockquote p.quote:before {
+	content:			'\201C';
+}
+blockquote p.quote:after {
+	content:			'\201D';
+}
+blockquote p.cite {
+	text-align:			right;
+	font-size:			19.2px;
+	font-size:			1.2rem;
+	margin:				6.4px 8px;
+	margin:				0.4rem 0.5rem;
+}
+blockquote p.cite:before {
+	content:			'- ';
+}
+
+footer {
+	margin:				0 auto;
+}
+ul.social {
+	padding-left:		0;
+	list-style-type:	none;
+	display:			block;
+	font-size:			48px;
+	font-size:			3rem;
+	margin:				0 auto;
+	max-width:			960px;
+	width:				100%;
+	text-align:			center;
+}
+ul.social  li {
+	display:			inline-block;
+	text-align:			center;
+	zoom: 1;
+	*display: inline;
+}
+ul.social li a {
+	color:				#FFFFFF;
+}
+
+@font-face {
+    font-family:		'Mono Social Icons Font';
+    src:				url('font/MonoSocialIconsFont-1.10.eot?#iefix') format('embedded-opentype'),
+						url('font/MonoSocialIconsFont-1.10.woff') format('woff'),
+						url('font/MonoSocialIconsFont-1.10.ttf') format('truetype'),
+						url('font/MonoSocialIconsFont-1.10.svg#MonoSocialIconsFont') format('svg');
+    src:				url('font/MonoSocialIconsFont-1.10.ttf') format('truetype');
+    font-weight:		normal;
+    font-style:			normal;
+}
+
+.symbol, a.symbol:before {
+    font-family:		'Mono Social Icons Font';
+    -webkit-text-rendering:optimizeLegibility;
+    -moz-text-rendering:optimizeLegibility;
+    -ms-text-rendering:	optimizeLegibility;
+    -o-text-rendering:	optimizeLegibility;
+    text-rendering:		optimizeLegibility;
+    -webkit-font-smoothing:antialiased;
+    -moz-font-smoothing:antialiased;
+    -ms-font-smoothing:	antialiased;
+    -o-font-smoothing:	antialiased;
+    font-smoothing:		antialiased;
+}
+
+a.symbol:before {
+    content:			attr(title);
+    margin-right:		0.3em;
+    font-size:			130%;
+}
+
+.lightbox_overlay {
+	display:			none;
+	position:			fixed;
+	left:				0;
+	top:				0;
+	width:				100%;
+	height:				100%;
+	background:			rgba(0,0,0,0.8);
+	text-align:			center;
+}
+.lightbox_overlay img {
+	opacity:			0;
+	max-height:			80%;
+	max-width:			90%;
+	box-shadow:			0 3px 5px rgba(0,0,0,0.7);
+	display:			block;
+	margin:				5% auto 10px;
+	-moz-transition:	opacity 1s;
+    -webkit-transition:	opacity 1s;
+    -o-transition:		opacity 1s;
+    transition:			opacity 1s;
+}
+.lightbox_overlay a {
+	display:			inline-block;
+	background:			#FFFFFF;
+	padding:			4px 7px;
+	font-family:		'Courier New',Courier,'Lucida Sans Typewriter','Lucida Typewriter','Liberation Mono',monospace;
+	zoom: 1;
+	*display: inline;
+}
+.lightbox_overlay:target {
+	display:			block;
+}
+.lightbox_overlay:target img {
+	opacity:			1;
+}
+
+@media (max-width: 900px) {
+	html {
+		font-size:			15px;
+	}
+}
+@media (max-width: 700px) {
+	html {
+		font-size:			14px;
+	}
+	div.content ul {
+		clear:				left;
+	}
+}
+@media (max-width: 550px) {
+	.banner {
+		display:			block;
+		text-align:			center;
+		background:			#FFFFFF;
+		padding-top:		14px;
+		padding-top:		1rem;
+	}
+	div.logo {
+		font-family: 		Special Elite, monospace;
+		font-size:			56px;
+		font-size:			4rem;
+		line-height:		42px;
+		line-height:		3rem;
+		margin:				0 auto;
+		color:				#444444;
+	}
+	div.logo div.small {
+		font-size:			18.2px;
+		font-size:			1.3rem;
+		line-height:		0;
+	}
+	p.subtitle {
+		color:				#444444;
+		margin:				0 auto 0;
+		font-size:			22.4px;
+		font-size:			1.6rem;
+		font-family:		'Courier New',Courier,'Lucida Sans Typewriter','Lucida Typewriter','Liberation Mono',monospace;
+	}
+	ul.navigation  li {
+		display:			block;
+		text-align:			center;
+	}
+	ul.navigation li a {
+		width:				auto;
+	}
+	div.main_image {
+		height:				210px;
+		height:				15rem;
+	}
+	ul.images  li {
+		display:			inline-block;
+		text-align:			center;
+		width:				50%;
+		zoom: 1;
+		*display: inline;
+	}
+	div.article_inner img.aside {
+		display:			block;
+		margin:				10px auto;
+		box-shadow:			0 0 0 8px rgba(0,0,0,0.3);
+		max-width:			100%;
+		float:				none;
+	}
+	div.main_image {
+		background-size:	800px auto;
+	}
+}

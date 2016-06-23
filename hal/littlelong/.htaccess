@@ -1,0 +1,4 @@
+AuthType Basic
+AuthName "Little & Long"
+AuthUserFile "/home/iamhal/.htpasswds/public_html/littlelong/passwd"
+require valid-user
