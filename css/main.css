@@ -428,6 +428,10 @@ img.taddypole_logo {
     max-width: 100%;
 }
 
+a.badge {
+    border: 0px;
+    margin: 0px 5px;
+}
 
 /* ==========================================================================
    Helper classes
