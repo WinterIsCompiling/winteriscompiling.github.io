@@ -13,10 +13,35 @@
         <!-- Place favicon.ico in the root directory -->
 		<link rel="icon" href="/img/favicon16.png">
 
-        <link rel="stylesheet" href="/css/normalize.css">
-        <link rel="stylesheet" href="/css/main.css">
+        <link rel="stylesheet" href="../css/normalize.css">
+        <link rel="stylesheet" href="../css/main.css">
+        <link rel="stylesheet" href="../css/swipebox.min.css">
+
 		<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
         <script src="/js/vendor/modernizr-2.8.3.min.js"></script>
+        <script src="../js/jquery.swipebox.min.js"></script>
+        <script type='text/javascript'>
+            function scrollImages(dir) {
+                console.log("Scrolling");
+                var imsize = 315; //Width + padding
+                var pos = document.getElementById("screenshot_scroller").scrollLeft;
+                var imnum = Math.floor(pos / imsize);
+                if (dir) { //Right
+                    console.log($(".screenshot_scroller"));
+                    //$("#screenshot_scroller").scrollLeft((imnum + 1) * imsize);
+                    $("#screenshot_scroller").animate({scrollLeft: (imnum + 1) * imsize});
+                }
+                else {
+                    $("#screenshot_scroller").animate({scrollLeft: (imnum - 1) * imsize});
+                }
+            }
+            
+            $(document).ready(function() {
+                console.log("Finished");
+                $('.swipebox').swipebox();
+            });
+        </script>
     </head>
     <body>
         <!-- Add your site or application content here -->
@@ -33,7 +58,7 @@
 				</nav>
 			</div>
 			<div class='banner taddypole_background'>
-                <img src='/img/taddypole/logo.png' class='taddypole_logo' alt='TaddyPole Logo' />
+                <img src='../img/taddypole/logo.png' class='taddypole_logo' alt='TaddyPole Logo' />
                 <div class='download'>
                     <a href='/taddypole/play/' class='button play'>Play TaddyPole</a>
                     <p class='or'>OR</p>
@@ -45,10 +70,31 @@
 		</header>
 		<div class="main gamepage">
 			<main class='gameholder'>
+                <div class='screenshots'>
+                    <button class='scroll_left' onclick="scrollImages(false)">
+                        <img src='../img/arrow_left.svg'>
+                    </button>
+                    <div class='screenshots_inner' id='screenshot_scroller'>
+                        <a href='../img/taddypole/screenshots/beetle.jpg' class='swipebox' title="Escape predators">
+                            <img src='../img/taddypole/screenshots/beetle_small.jpg' />
+                        </a><a href='../img/taddypole/screenshots/froglet.jpg' class='swipebox' title="Grow your tadpole">
+                            <img src='../img/taddypole/screenshots/froglet_small.jpg' />
+                        </a><a href='../img/taddypole/screenshots/lilypads.jpg' class='swipebox' title="Find and hunt food">
+                            <img src='../img/taddypole/screenshots/lilypads_small.jpg' />
+                        </a><a href='../img/taddypole/screenshots/frog.jpg' class='swipebox' title="Bounce your frog to safety">
+                            <img src='../img/taddypole/screenshots/frog_small.jpg' />
+                        </a><a href='../img/taddypole/screenshots/achievements.jpg' class='swipebox' title="Discover everything in the pond">
+                            <img src='../img/taddypole/screenshots/achievements_small.jpg' />
+                        </a>
+                    </div>
+                    <button class='scroll_right' onclick="scrollImages(true)">
+                        <img src='../img/arrow_right.svg'>
+                    </button>
+                </div>
                 <div class='desc'>
                     <h2>About TaddyPole</h2>
                     <p>TaddyPole is an educational game, created for <a href='http://tadpoles.org.uk/' target='_blank' rel='nofollow'>Tadpoles.org.uk</a> to help teach children about the lifecycle and habitats of tadpoles.</p>
-                    <p>TaddyPole was created using the Unity game engine, and is available to play in any modern web browser. TaddyPole can also be downloaded on iOS, Android, and Windows 10, through the store links above.</p>
+                    <p>TaddyPole was developed using the Unity game engine, and is available to play in any modern web browser. TaddyPole can also be downloaded on iOS, Android, and Windows 10, through the store links above.</p>
                 </div>
 			</main>
             
@@ -57,7 +103,7 @@
 			</footer>
 		</div>
 
-        <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+        <!--<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>-->
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.12.0.min.js"><\/script>')</script>
         <script src="/js/plugins.js"></script>
         <script src="/js/main.js"></script>

@@ -177,6 +177,33 @@ nav ul li {
     display: inline-block;
 }
 
+
+@media (max-width: 450px) {
+    nav {
+        text-align: center;
+    }
+    nav a.logo {
+        display: block;
+        float: none;
+    }
+    nav ul {
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        
+        flex-direction: row;
+        
+        flex-wrap: wrap;
+        -webkit-flex-wrap: wrap;
+    }
+    nav ul li {
+        width: 50%;
+    }
+    nav ul li a {
+        display: block;
+    }
+}
+
 a.logo {
 	float: left;
 }
@@ -431,6 +458,56 @@ img.taddypole_logo {
 a.badge {
     border: 0px;
     margin: 0px 5px;
+}
+
+.screenshots {
+    margin: 0px 15px;
+    height: 189px;
+    overflow-y: hidden;
+    overflow-x: visible;
+    position: relative;
+}
+
+.screenshots_inner {
+    overflow-x: scroll;
+    white-space: nowrap;
+}
+
+.screenshots_inner img {
+    max-width: 300px;
+}
+.screenshots_inner a {
+    display: inline-block;
+    margin: 10px 15px 10px 0px;
+}
+.screenshots_inner a:first-child {
+    margin-left: 30px;
+}
+.screenshots_inner a:last-child {
+    margin-right: 30px;
+}
+
+.screenshots .scroll_left, .screenshots .scroll_right {
+    position: absolute;
+    top: 10px;
+    bottom: 10px;
+    width: 30px;
+    display: block;
+    
+    background: #DDD;
+    padding: 0px;
+    margin: 0px;
+    border: 0px;
+}
+
+.screenshots .scroll_left {
+    left: 0px;
+    box-shadow: 7px 0px 5px -5px rgba(0,0,0,0.7);
+}
+
+.screenshots .scroll_right {
+    right: 0px;
+    box-shadow: -7px 0px 5px -5px rgba(0,0,0,0.7);
 }
 
 /* ==========================================================================
